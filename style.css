@@ -1,0 +1,118 @@
+/*CSS reset*/
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+*::after, *::before{
+    box-sizing: border-box;
+}
+ul,ol{
+    list-style: none;
+}
+.icon {
+    width: 1em; height: 1em;
+    vertical-align: -0.15em;
+    fill: currentColor;
+    overflow: hidden;
+ }
+/* style */
+body{
+    background-color: #E5E5E5;
+}
+.searchForm{
+    
+    margin: 40px;
+    display: flex;
+    justify-content: space-between;
+}
+.searchForm >input{
+    width: 100%;
+    height: 51px;
+    border-radius: 51px 0 0 51px;
+    background-color:#fff;
+    border: #C4C7CE;
+    padding: 7px 18px 6px 18px;
+    font-family: Arial,Helvetica,sans-serif;
+    font-size: 18px;
+    overflow: hidden;
+    display: block;
+    outline: none;
+   
+}
+.searchForm > button{
+    white-space: nowrap;
+    width: 98px;
+    border-radius: 0 51px 51px 0;
+    background-color: #4E6EF2;
+    border: none;
+    font-size: 18px;
+    font-family: "PingFang SC",Arial,"Microsoft YaHei",sans-serif;
+    color: #fff;
+}
+.globalMain{
+    
+}
+.siteList{
+    display: flex;
+    flex-wrap: wrap;
+    margin: 24px;
+    
+}
+.siteList >li{
+   margin: 12px;
+   
+   
+}
+.siteList .site{
+    
+    width: 96px;
+    height: 96px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: #fff;
+    border-radius: 5px;
+}
+.siteList .site >.logo{
+    width: 42px;
+    height: 75px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 64px ;
+}
+.siteList .site >.link{
+    font-size: 12px ;
+   
+}
+.siteList .addButton{
+    width: 96px;
+    height: 96px;
+    background-color: #fff;
+    flex-direction: column;
+}
+.siteList .addButton .icon {
+    width: 64px;
+    height: 64px;
+    
+}
+.siteList .addButton .icon-wrapper{
+   
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 8px;
+}
+.siteList .addButton .text{
+    
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    
+}
+.siteLink{
+    text-decoration: none;
+    color: black;
+}
