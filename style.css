@@ -21,11 +21,11 @@ body{
     background-color: #E5E5E5;
 }
 .searchForm{
-    
     margin: 40px;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-between;    
 }
+
 .searchForm >input{
     width: 100%;
     height: 51px;
@@ -51,7 +51,9 @@ body{
     color: #fff;
 }
 .globalMain{
-    
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
 }
 .siteList{
     display: flex;
@@ -64,8 +66,7 @@ body{
    
    
 }
-.siteList .site{
-    
+.siteList .site{    
     width: 96px;
     height: 96px;
     display: flex;
@@ -74,6 +75,9 @@ body{
     flex-direction: column;
     background-color: #fff;
     border-radius: 5px;
+    overflow:hidden;
+    position: relative;
+    cursor: pointer;
 }
 .siteList .site >.logo{
     width: 42px;
@@ -83,9 +87,18 @@ body{
     align-items: center;
     font-size: 64px ;
 }
-.siteList .site >.link{
-    font-size: 12px ;
-   
+.link{
+    font-size: 12px ;  
+}
+.siteList .site > .close{
+    position: absolute;
+    right: 4px;
+    top: 0px; 
+    display: none;
+    cursor: default;
+}
+.siteList .site:hover> .close {
+    display: block;
 }
 .siteList .addButton{
     width: 96px;
@@ -103,7 +116,7 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
-    padding-top: 8px;
+    padding-top: 4px;
 }
 .siteList .addButton .text{
     
@@ -112,7 +125,32 @@ body{
     display: flex;
     
 }
+body{
+    background-image: url(./02b.jpg);
+    background-size: cover;
+}
 .siteLink{
     text-decoration: none;
     color: black;
+}
+@media (min-width:500px){
+    .searchForm{
+        max-width: 800px;
+        margin-right: auto;
+        margin-left: auto;
+    }
+    .siteList .site{    
+        width: 128px;
+        height: 128px;
+    }
+    .siteList .addButton{
+        width: 128px;
+        height: 128px;
+    }
+    .siteList .addButton .icon-wrapper{
+        padding-top: 25px;
+    }
+    body{
+        background-image: url(./02a.jpg);
+    }
 }

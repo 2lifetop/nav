@@ -3,23 +3,43 @@ const $lastLi = $siteList.find('li.last')
 const x = localStorage.getItem('x')
 const xObject = JSON.parse(x)
 const hashMap = xObject || [
-    {logo:'A',logoType:'text', url:'https://www.acfun.cn'},
-    {logo:"B",logoType:'image', url:"https://www.bilibili.com"},
+    {logo:'G',logoType:'text', url:'https://github.com'},
+    {logo:"V",logoType:'text', url:"https://www.v2ex.com/"},
+    {logo:"H",url:'https://news.ycombinator.com/'},
+    {logo:'M',url:'https://developer.mozilla.org/zh-CN/'},
+    {logo:'L',url:'https://leetcode.com/'},
+    {logo:'N',url:'https://www.nowcoder.com/'},
 ]
+const simplifyUrl = (url)=>{
+    return url.replace('https://','')
+            .replace('http://','')
+            .replace('www.','')
+            .replace(/\/.*/,'') //删除链接/后的内容
+}
 const render=()=>{
     $siteList.find('li:not(.last').remove()
-    hashMap.forEach(node=>{
+    hashMap.forEach((node,index)=>{
         const $li = $(`
             <li>
-                <a class='siteLink' href="${node.url}" target="_blank" rel="noopener noreferrer">
                     <div class="site">
                         <div class="logo">${node.logo}</div>
-                        <div class="link">${node.url}</div>
-                    </div>
-                </a>
-    
+                        <div class="link">${simplifyUrl(node.url)}</div>
+                        <div class='close'>
+                        <svg class="icon">
+                        <use xlink:href="#icon-remove"></use>
+                    </svg>
+                        </div>
+                    </div>   
             </li>
         `).insertBefore($lastLi)
+        $li.on('click',()=>{
+            window.open(node.url)
+        })
+        $li.on('click','.close',(e)=>{
+            e.stopPropagation() //阻止冒泡
+            hashMap.splice(index,1)
+            render();
+        })
     });
 }
 render();
@@ -31,7 +51,7 @@ $('.addButton')
             url = 'https://'+ url;
         };    
         hashMap.push({
-            logo:url[0],
+            logo:simplifyUrl(url)[0].toUpperCase(),
             logoType:'text',
             url:url
         });
@@ -41,3 +61,11 @@ $('.addButton')
         const string = JSON.stringify(hashMap)
         localStorage.setItem('x',string)
     }
+$(document).on('keypress',(e)=>{
+    const {key} = e;
+    for(let i=0;i<hashMap.length;i++){
+       if(hashMap[i].logo.toLowerCase()===key){
+           window.open(hashMap[i].url)
+       }
+    }
+})
