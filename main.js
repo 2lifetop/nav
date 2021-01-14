@@ -2,13 +2,13 @@ const $siteList =$('.siteList')
 const $lastLi = $siteList.find('li.last')
 const x = localStorage.getItem('x')
 const xObject = JSON.parse(x)
-const haspMap = xObject || [
+const hashMap = xObject || [
     {logo:'A',logoType:'text', url:'https://www.acfun.cn'},
     {logo:"B",logoType:'image', url:"https://www.bilibili.com"},
 ]
 const render=()=>{
     $siteList.find('li:not(.last').remove()
-    haspMap.forEach(node=>{
+    hashMap.forEach(node=>{
         const $li = $(`
             <li>
                 <a class='siteLink' href="${node.url}" target="_blank" rel="noopener noreferrer">
@@ -30,7 +30,7 @@ $('.addButton')
         if(url.indexOf('http')!==0){
             url = 'https://'+ url;
         };    
-        haspMap.push({
+        hashMap.push({
             logo:url[0],
             logoType:'text',
             url:url
@@ -38,6 +38,6 @@ $('.addButton')
         render();
     });
     window.onbeforeunload = ()=>{
-        const string = JSON.stringify(haspMap)
+        const string = JSON.stringify(hashMap)
         localStorage.setItem('x',string)
     }
