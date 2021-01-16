@@ -17,7 +17,7 @@ const simplifyUrl = (url)=>{
             .replace(/\/.*/,'') //删除链接/后的内容
 }
 const render=()=>{
-    $siteList.find('li:not(.last').remove()
+    $siteList.find('li:not(.last)').remove()
     hashMap.forEach((node,index)=>{
         const $li = $(`
             <li>
@@ -61,11 +61,12 @@ $('.addButton')
         const string = JSON.stringify(hashMap)
         localStorage.setItem('x',string)
     }
-$(document).on('keypress',(e)=>{
-    const {key} = e;
-    for(let i=0;i<hashMap.length;i++){
-       if(hashMap[i].logo.toLowerCase()===key){
-           window.open(hashMap[i].url)
-       }
-    }
-})
+    //监听键盘按键，快捷到达指点网站，存在bug，在搜索栏中依旧会生效
+    // $(document).on('keypress',(e)=>{
+    //     const {key} = e;
+    //     for(let i=0;i<hashMap.length;i++){
+    //        if(hashMap[i].logo.toLowerCase()===key){
+    //            window.open(hashMap[i].url)
+    //        }
+    //     }
+    // })
